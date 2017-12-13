@@ -67,7 +67,7 @@ public class Controller {
     // If no database, return empty array.
     guard let dbMgr = self.dbMgr else {
       Log.warning(">> No database manager.")
-      respondWith(nil, .internalServerError)
+      respondWith([], nil)
       return
     }
     
@@ -112,7 +112,7 @@ public class Controller {
   public func addVisitors(user: [String: String], respondWith: @escaping ([String: String]?, RequestError?) -> Void) {
     guard let name = user["name"], let dbMgr = self.dbMgr else {
       Log.warning(">> No database manager.")
-      respondWith(nil, .internalServerError)
+      respondWith(["response": "Hello \(user["name"] ?? "")!"], nil)
       return
     }
 
